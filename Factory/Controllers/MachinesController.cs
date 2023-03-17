@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Factory.Controllers
 {
-  public class MachineController : Controller
+  public class MachinesController : Controller
   {
     private readonly FactoryContext _db;
 
@@ -39,7 +39,7 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult Create(Machine machine, int engineerId)
     {
-      _db.Machine.Add(machine);
+      _db.Machines.Add(machine);
       _db.SaveChanges();
       #nullable enable
       EngineerMachine? joinEntity = _db.EngineerMachines.FirstOrDefault(join => (join.EngineerId == engineerId && join.MachineId == machine.MachineId));

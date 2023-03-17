@@ -1,29 +1,40 @@
-// using Microsoft.AspNetCore.Builder;
-// using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using Factory.Models;
 
-// namespace ProjectName
-// {
-//   class Program
-//   {
-//     static void Main(string[] args)
-//     {
-//       WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+namespace Factory
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-//       builder.Services.AddControllersWithViews();
+      builder.Services.AddControllersWithViews();
 
-//       WebApplication app = builder.Build();
+      builder.Services.AddDbContext<FactoryContext>(
+                        dbContextOptions => dbContextOptions
+                          .UseMySql(
+                            builder.Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"]
+                          )
+                        )
+                      );
 
-//       // app.UseDeveloperExceptionPage();
-//       app.UseHttpsRedirection();
+      WebApplication app = builder.Build();
 
-//       app.UseRouting();
+      // app.UseDeveloperExceptionPage();
+      app.UseHttpsRedirection();
+      app.UseStaticFiles();
 
-//       app.MapControllerRoute(
-//         name: "default",
-//         pattern: "{controller=Home}/{action=Index}/{id?}"
-//       );
+      app.UseRouting();
 
-//       app.Run();
-//     }
-//   }
-// }
+      app.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}"
+      );
+
+      app.Run();
+    }
+  }
+}

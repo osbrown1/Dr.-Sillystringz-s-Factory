@@ -11,10 +11,13 @@ namespace Factory.Controllers
   {
     private readonly FactoryContext _db;
 
+
     public MachinesController(FactoryContext db)
     {
       _db = db;
     }
+
+    
 
     public ActionResult Index()
     {
@@ -110,5 +113,7 @@ namespace Factory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
   }
 }
+

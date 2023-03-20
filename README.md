@@ -52,7 +52,7 @@ A website for managing your factory's engineers and the machines they're license
 
 ## Known Bugs
 
-Blank and un-deletable stylists can be made. 
+Blank and un-deletable Engineers and Machines can be made. 
 
 ## License
 Enjoy the site! If you have questions or suggestions for fixing the code, please contact me!

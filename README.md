@@ -22,12 +22,13 @@ A website for managing your factory's engineers and the machines they're license
 * A code editor, like VS Code
 * Git installed
 * Install .Net6 SDK
+* MySql Workbench installed
 
-#### Install MySQL Workbench:
-* Follow the MySqlWorkbench installation instructions [here](https://www.mysql.com/products/workbench/), open MySql Workbench and select the Local 3306 server. Then select the "Administration" tab and click on "Data Import/Restore".
-* In Import Options select "Import from Self-Contained File" and click the "..." button to navigate to the file ending in ".sql" in the top level of this repository.
-* Under the "Default Schema to be Imported to" select "New..." and enter schema name of your choice. Click "Start Import" in the bottom right.
-* Confirm the import was successful by clicking on the "Schemas" tab and seeing the schema you created listed.
+#### Database Migrations:
+* Install dotnet-ef 
+* Install Microsoft.EntityFrameworkCore.Design package in production directory
+* Create migration
+* Update database with the migration
 
 #### Preliminary Project Set-up:
 1. Clone or download this repository to your machine.
